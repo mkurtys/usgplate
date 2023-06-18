@@ -1,0 +1,13 @@
+odfpy==1.4.1
+Pillow==9.5.0
+PySide6==6.5.0
+dataclasses-json>=0.5
+pydicom==2.3.1
+pynetdicom==2.0.2
+
+# dicom 
+python-gdcm==3.0.22
+
+# development
+pytest>=7.0.0
+pytest-qt==4.2.0

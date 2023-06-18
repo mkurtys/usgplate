@@ -1,0 +1,12 @@
+{
+    "store_scp": {
+        "enabled": true,
+        "ae_title": "STORE_SCP",
+        "port": 4243,
+        "dcm_repository_root": "output/dcm_repository"
+    },
+    "image_dir_scanner" : {
+        "enabled": true,
+        "directory": "~/studies"
+    }
+}

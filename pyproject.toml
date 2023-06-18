@@ -1,0 +1,31 @@
+[build-system]
+requires = []
+
+[project]
+name = "usgplate"
+version = "0.0.1"
+authors = [
+    {name = "Michal Kurtys", email = "michal.kurtys __*AT*__ gmail.com"},
+]
+description = "An Python Application for creating ultrasound reports"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Scientific/Engineering :: Medical Science Apps",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[pytest]
+testpaths = "tests"
+qt_api="pyside6"
