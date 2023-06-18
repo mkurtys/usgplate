@@ -31,13 +31,18 @@ def is_file_dicom(filename: str|Path) -> bool:
 
 def qimage_from_dcm_or_img_file(filename: str|Path) -> QImage:
     filename = Path(filename)
-    if is_file_dicom(filename):
-        ds = pydicom.read_file(filename)
-        image = pil_image_from_dicom(ds)
-        qt_image = PIL.ImageQt.ImageQt(image)
-        return QImage(qt_image)
-    else:
-        return QImage(str(filename))
+    # TODO: error handling
+    try:
+        if is_file_dicom(filename):
+            ds = pydicom.read_file(filename)
+            image = pil_image_from_dicom(ds)
+            qt_image = PIL.ImageQt.ImageQt(image)
+            return QImage(qt_image)
+        else:
+            return QImage(str(filename))
+    except Exception as e:
+        logger.error(f"Could not load image {filename}: {e}")
+        return QImage()
     
 def qpixmap_from_dcm_or_img_file(filename: str|Path) -> QPixmap:
     image = qimage_from_dcm_or_img_file(filename)

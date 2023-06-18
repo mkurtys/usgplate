@@ -20,7 +20,7 @@ class AnnotatedPixmapModel(QAbstractListModel):
     def data(self, index, role):
         annotated_pixmap_future = self.pixmaps[index.row()]
         if not annotated_pixmap_future.is_finished():
-            logger.debug("i never return none")
+            # logger.debug("i never return none")
             return None
 
         annotated_pixmap = annotated_pixmap_future.get()
