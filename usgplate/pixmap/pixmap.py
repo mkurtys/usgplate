@@ -25,7 +25,6 @@ class AnnotatedPixmap:
 
 def is_file_dicom(filename: str|Path) -> bool:
     filename = Path(filename)
-    print(filename, filename.suffix)
     return filename.suffix == ".dcm" or filename.suffix == ".dicom"
 
 

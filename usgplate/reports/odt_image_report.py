@@ -141,7 +141,6 @@ def create_odt_image_report(input_doc_filename: str | None,
         i+=1
     
     insert_to = find_node_by_containing_text(doc.text, "$images")
-    print(insert_to)
     if insert_to is not None:
         replace_node(insert_to, datatable)
     else:

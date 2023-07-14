@@ -12,7 +12,7 @@ import usgplate.logging.logging  # noqa
 from usgplate.pixmap.pixmap import PixmapCachedLoader
 from usgplate.reports.odt_image_report import create_odt_image_report
 from usgplate.services.image_providers.image_provider_manager import ImageProviderManager
-from usgplate.settings.settings import ApplicationSettings
+from usgplate.settings.settings import ApplicationSettings, read_settings, save_settings
 from usgplate.ui.modals.choose_directory_modal import choose_directory_modal
 from usgplate.ui.modals.settings_modal import SettingsModal
 from usgplate.ui.widgets.study_form import StudyForm
@@ -96,6 +96,7 @@ class MainWindow(QMainWindow):
         self.settings_modal.set_settings(self.settings)
         if self.settings_modal.exec():
             new_settings = self.settings_modal.get_settings()
+            save_settings(new_settings)
             self.image_provider_manager.refresh_services_settings(self.settings, new_settings)
             self.settings=new_settings
 
@@ -176,13 +177,7 @@ def sigint_handler(*args):
 
 def main():
     signal.signal(signal.SIGINT, sigint_handler)
-
-    try:
-        with open("settings.json", "r") as f:
-            application_settings = ApplicationSettings.from_json(f.read())
-    except FileNotFoundError:
-        application_settings = ApplicationSettings()
-
+    application_settings = read_settings()
     app = QApplication()
     app.setQuitOnLastWindowClosed(True)
     # add main window
